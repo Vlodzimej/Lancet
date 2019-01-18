@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lancet", "Lancet.API\Lancet.API.csproj", "{E067478E-1346-4082-9D37-1F00CCA492F3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EAFA33C9-E3E9-45E8-86C0-DE08B080B452} = {EAFA33C9-E3E9-45E8-86C0-DE08B080B452}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lancet.Models", "Lancet.Models\Lancet.Models.csproj", "{9B76FF99-E2ED-42B2-BC03-747DC0AEDC44}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lancet.Repository", "Lancet.Repository\Lancet.Repository.csproj", "{9A79D7A9-9724-4794-BA6C-ED1E50C8CC28}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9B76FF99-E2ED-42B2-BC03-747DC0AEDC44} = {9B76FF99-E2ED-42B2-BC03-747DC0AEDC44}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lancet.Service", "Lancet.Service\Lancet.Service.csproj", "{EAFA33C9-E3E9-45E8-86C0-DE08B080B452}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9A79D7A9-9724-4794-BA6C-ED1E50C8CC28} = {9A79D7A9-9724-4794-BA6C-ED1E50C8CC28}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E067478E-1346-4082-9D37-1F00CCA492F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E067478E-1346-4082-9D37-1F00CCA492F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E067478E-1346-4082-9D37-1F00CCA492F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E067478E-1346-4082-9D37-1F00CCA492F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B76FF99-E2ED-42B2-BC03-747DC0AEDC44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B76FF99-E2ED-42B2-BC03-747DC0AEDC44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B76FF99-E2ED-42B2-BC03-747DC0AEDC44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B76FF99-E2ED-42B2-BC03-747DC0AEDC44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A79D7A9-9724-4794-BA6C-ED1E50C8CC28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A79D7A9-9724-4794-BA6C-ED1E50C8CC28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A79D7A9-9724-4794-BA6C-ED1E50C8CC28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A79D7A9-9724-4794-BA6C-ED1E50C8CC28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAFA33C9-E3E9-45E8-86C0-DE08B080B452}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAFA33C9-E3E9-45E8-86C0-DE08B080B452}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAFA33C9-E3E9-45E8-86C0-DE08B080B452}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAFA33C9-E3E9-45E8-86C0-DE08B080B452}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C3F8F2C5-0E47-4489-800E-7E34000F654F}
+	EndGlobalSection
+EndGlobal
