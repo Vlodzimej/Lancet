@@ -71,8 +71,12 @@ namespace Lancet.Service.Concrete
         {
 
             var users = _unitOfWork.UserRepository.Get();
-            var userDtos = _mapper.Map<IList<UserDto>>(users);
-            return userDtos;
+            if (users.Any())
+            {
+                var userDtos = _mapper.Map<IList<UserDto>>(users);
+                return userDtos;
+            }
+            return null;
         }
 
         public UserDto GetUserById(Guid id)

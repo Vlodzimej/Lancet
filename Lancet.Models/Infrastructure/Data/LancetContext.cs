@@ -8,7 +8,11 @@ namespace Lancet.Models.Domain.Model
         public LancetContext(DbContextOptions<LancetContext> options) : base(options)
         {
         }
-
+        public DbSet<MetaData> MetaDatas { get; set; }
+        public DbSet<MetaObject> MetaObjects { get; set; }
+        public DbSet<MetaType> MetaTypes { get; set; }
+        public DbSet<ObjectRelation> ObjectRelations { get; set; }
+        public DbSet<Relation> Relations { get; set; }
         public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

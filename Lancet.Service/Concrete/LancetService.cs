@@ -14,10 +14,11 @@ namespace Lancet.Service.Concrete
         private readonly IConfiguration _configuration;
         //private User currentUser;
 
-        public LancetService(IUnitOfWork unitOfWork, IConfiguration configuration)
+        public LancetService(IUnitOfWork unitOfWork, IConfiguration configuration, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _configuration = configuration;
+            _mapper = mapper;
         }
 
         #region IDisposable

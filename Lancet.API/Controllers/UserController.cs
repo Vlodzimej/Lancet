@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Lancet.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Produces("application/json")]
     [Route("api/User")]
     public class UsersController : ControllerBase
