@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Lancet.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Produces("application/json")]
     [Route("api/User")]
     public class UsersController : ControllerBase
@@ -26,14 +26,14 @@ namespace Lancet.Controllers
         [HttpPost("authenticate")]
         public IActionResult Authenticate([FromBody]UserDto userDto)
         {
-            var result = _coldWarService.AuthenticateUser(userDto);
-            if (result != null)
+            try
             {
+                var result = _coldWarService.AuthenticateUser(userDto);
                 return new ObjectResult(result);
             }
-            else
+            catch(AppException ex)
             {
-                return new NotFoundObjectResult("User not found");
+                return new BadRequestObjectResult(ex.Message);
             }
         }
 
@@ -86,8 +86,15 @@ namespace Lancet.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {
-            _coldWarService.DeleteUser(id);
-            return new OkResult();
+            try
+            {
+                _coldWarService.DeleteUser(id);
+                return new OkResult();
+            }
+            catch(AppException ex)
+            {
+                return new BadRequestObjectResult(ex);
+            }
         }
     }
 }

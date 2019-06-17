@@ -1,16 +1,16 @@
-﻿using Lancet.Models.Domain.Model;
-using Lancet.Service.Abstract;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Lancet.Service.Helpers;
-using Lancet.Models.Domain.Dtos;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Security.Claims;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using System.Security.Claims;
 using AutoMapper;
-using System.Linq;
+using Lancet.Models.Domain.Model;
+using Lancet.Service.Abstract;
+using Lancet.Service.Helpers;
+using Lancet.Models.Domain.Dtos;
 
 namespace Lancet.Service.Concrete
 {
@@ -97,7 +97,7 @@ namespace Lancet.Service.Concrete
             if (string.IsNullOrWhiteSpace(userDto.Password))
                 throw new AppException("Password is required");
 
-            if (_unitOfWork.UserRepository.Get(x => x.Username == user.Username).GetEnumerator().Current != null)
+            if (_unitOfWork.UserRepository.Get(x => x.Username == user.Username).Count() > 0)
                 throw new AppException("Username \"" + user.Username + "\" is already taken");
 
             byte[] passwordHash, passwordSalt;
@@ -151,11 +151,18 @@ namespace Lancet.Service.Concrete
 
         public void DeleteUser(Guid id)
         {
-            var user = _unitOfWork.UserRepository.GetByID(id);
-            if (user != null)
+            try
             {
-                _unitOfWork.UserRepository.Remove(user);
-                _unitOfWork.Save();
+                var user = _unitOfWork.UserRepository.GetByID(id);
+                if (user != null)
+                {
+                    _unitOfWork.UserRepository.Remove(user);
+                    _unitOfWork.Save();
+                }
+            }
+            catch(Exception ex)
+            {
+                throw new AppException(ex.Message);
             }
         }
 
