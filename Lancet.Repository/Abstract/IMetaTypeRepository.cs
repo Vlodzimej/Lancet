@@ -2,6 +2,6 @@
 
 namespace Lancet.Repository.Abstract
 {
-    public interface IUserRepository : IGenericRepository<User>
+    public interface IMetaTypeRepository : IGenericRepository<MetaType>
     { }
 }

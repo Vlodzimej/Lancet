@@ -11,7 +11,10 @@ namespace Lancet.Repository.Abstract
             Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             string includeProperties = "");
-
-        void Remove(TEntity entity);
+        TEntity GetByID(object id);
+        TEntity Add(TEntity entity);
+        void Delete(object id);
+        void Delete(TEntity entityToDelete);
+        void Update(TEntity entityToUpdate);
     }
 }

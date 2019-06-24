@@ -52,9 +52,11 @@ namespace Lancet.Repository.Concrete
             return dbSet.Find(id);
         }
 
-        public virtual void Remove(TEntity entity)
+        public virtual TEntity Add(TEntity entity)
         {
             dbSet.Add(entity);
+            var result = dbSet.Find(entity);
+            return result;
         }
 
         public virtual void Delete(object id)

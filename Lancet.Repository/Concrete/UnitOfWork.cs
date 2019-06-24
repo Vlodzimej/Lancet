@@ -11,6 +11,10 @@ namespace Lancet.Repository.Concrete
 
         public UserRepository UserRepository => userRepository ?? new UserRepository(_LancetContext);
         private UserRepository userRepository;
+        public MetaObjectRepository MetaObjectRepository => metaObjectRepository ?? new MetaObjectRepository(_LancetContext);
+        private MetaObjectRepository metaObjectRepository;
+        public MetaTypeRepository MetaTypeRepository => metaTypeRepository ?? new MetaTypeRepository(_LancetContext);
+        private MetaTypeRepository metaTypeRepository;
 
         public UnitOfWork(LancetContext LancetContext)
         {

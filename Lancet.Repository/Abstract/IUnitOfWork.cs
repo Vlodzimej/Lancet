@@ -8,6 +8,8 @@ namespace Lancet.Repository.Abstract
     public interface IUnitOfWork : IDisposable
     {
         UserRepository UserRepository { get; }
+        MetaObjectRepository MetaObjectRepository { get; }
+        MetaTypeRepository MetaTypeRepository { get; }
         void Save();
     }
 }

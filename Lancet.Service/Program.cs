@@ -6,7 +6,7 @@ namespace Lancet.Service
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
         }
     }
 }

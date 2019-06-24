@@ -6,7 +6,7 @@ namespace Lancet.Repository
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
         }
     }
 }

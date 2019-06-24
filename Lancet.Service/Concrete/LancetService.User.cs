@@ -106,7 +106,7 @@ namespace Lancet.Service.Concrete
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
 
-            _unitOfWork.UserRepository.Remove(user);
+            _unitOfWork.UserRepository.Add(user);
             _unitOfWork.Save();
 
             return user;
@@ -156,7 +156,7 @@ namespace Lancet.Service.Concrete
                 var user = _unitOfWork.UserRepository.GetByID(id);
                 if (user != null)
                 {
-                    _unitOfWork.UserRepository.Remove(user);
+                    _unitOfWork.UserRepository.Delete(user);
                     _unitOfWork.Save();
                 }
             }
