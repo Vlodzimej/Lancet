@@ -25,7 +25,7 @@ namespace Lancet.API
             IEnumerable<MetaObjectDto> result = null;
             if (id != Guid.Empty)
             {
-                result = _lancetService.GetMetaObjectById(id);
+                result = _lancetService.GetMetaObjectById(id, User.Identity.Name);
             }
             else
             {

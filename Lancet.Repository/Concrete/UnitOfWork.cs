@@ -15,6 +15,10 @@ namespace Lancet.Repository.Concrete
         private MetaObjectRepository metaObjectRepository;
         public MetaTypeRepository MetaTypeRepository => metaTypeRepository ?? new MetaTypeRepository(_LancetContext);
         private MetaTypeRepository metaTypeRepository;
+        public RelationRepository RelationRepository => relationRepository ?? new RelationRepository(_LancetContext);
+        private RelationRepository relationRepository;
+        public ObjectRelationRepository ObjectRelationRepository => objectRelationRepository ?? new ObjectRelationRepository(_LancetContext);
+        private ObjectRelationRepository objectRelationRepository;
 
         public UnitOfWork(LancetContext LancetContext)
         {

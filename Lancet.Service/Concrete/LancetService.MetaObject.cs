@@ -4,6 +4,7 @@ using Lancet.Models.Domain.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Lancet.Data;
 
 namespace Lancet.Service.Concrete
 {
@@ -14,13 +15,18 @@ namespace Lancet.Service.Concrete
         /// </summary>
         /// <param name="metaObjectId">Id мета-объекта</param>
         /// <returns></returns>
-        public IEnumerable<MetaObjectDto> GetMetaObjectById(Guid metaObjectId, string username = null)
+        public IEnumerable<MetaObjectDto> GetMetaObjectById(Guid metaObjectId, string username = "test")
         {
+            username = "test";
             var metaObject = _unitOfWork.MetaObjectRepository.GetByID(metaObjectId);
             var metaObjectDto = _mapper.Map<MetaObjectDto>(metaObject);
             if (username != null)
             {
                 var accountObject = GetMetaObjectByUsername(username);
+                if(accountObject != null)
+                {
+                    GetRelationsByMetaObjectId(metaObjectId, Types.Role.Id);
+                }
                 
             }
             var result = new List<MetaObjectDto>() { metaObjectDto };

@@ -61,9 +61,9 @@ namespace Lancet
                 {
                     OnTokenValidated = context =>
                     {
-                        var coldWarService = context.HttpContext.RequestServices.GetRequiredService<ILancetService>();
+                        var lancetService = context.HttpContext.RequestServices.GetRequiredService<ILancetService>();
                         var userId = Guid.Parse(context.Principal.Identity.Name);
-                        var user = coldWarService.GetUserById(userId);
+                        var user = lancetService.GetUserById(userId);
                         if (user == null)
                         {
                             // return unauthorized if user no longer exists

@@ -10,6 +10,8 @@ namespace Lancet.Repository.Abstract
         UserRepository UserRepository { get; }
         MetaObjectRepository MetaObjectRepository { get; }
         MetaTypeRepository MetaTypeRepository { get; }
+        RelationRepository RelationRepository { get; }
+        ObjectRelationRepository ObjectRelationRepository { get; }
         void Save();
     }
 }
