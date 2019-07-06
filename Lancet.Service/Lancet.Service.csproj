@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Lancet.Repository\Lancet.Repository.csproj" />
+    <ProjectReference Include="..\Lancet.Data\Lancet.Data.csproj" />
   </ItemGroup>
 
 </Project>

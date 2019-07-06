@@ -16,7 +16,7 @@ namespace Lancet.Models.Domain.Model
         /// </summary>
         public string Title { get; set; }
         /// <summary>
-        /// Название
+        /// Системное имя
         /// </summary>
         public string Name { get; set; }
         /// <summary>

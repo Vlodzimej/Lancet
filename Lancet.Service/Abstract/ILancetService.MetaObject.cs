@@ -8,7 +8,9 @@ namespace Lancet.Service.Abstract
 {
     public partial interface ILancetService
     {
-        MetaObjectDto GetMetaObjectById(Guid metaObjectId);
+        IEnumerable<MetaObjectDto> GetMetaObjectById(Guid metaObjectId, string username = null);
         Guid CreateMetaObject(MetaObjectDto metaObjectDto);
+        IEnumerable<MetaObjectDto> GetAllMetaObjects();
+        MetaObject GetMetaObjectByUsername(string username);
     }
 }

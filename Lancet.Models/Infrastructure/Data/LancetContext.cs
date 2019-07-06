@@ -15,6 +15,7 @@ namespace Lancet.Models.Domain.Model
         public DbSet<Relation> Relations { get; set; }
         public DbSet<User> Users { get; set; }
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

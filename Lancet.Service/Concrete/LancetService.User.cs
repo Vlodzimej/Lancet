@@ -11,6 +11,7 @@ using Lancet.Models.Domain.Model;
 using Lancet.Service.Abstract;
 using Lancet.Service.Helpers;
 using Lancet.Models.Domain.Dtos;
+using Lancet.Data;
 
 namespace Lancet.Service.Concrete
 {
@@ -88,7 +89,7 @@ namespace Lancet.Service.Concrete
 
         public User CreateUser(UserDto userDto)
         {
-            if(userDto == null)
+            if (userDto == null)
                 throw new AppException("Wrong user data");
 
             var user = Mapper.Map<User>(userDto);
@@ -109,7 +110,18 @@ namespace Lancet.Service.Concrete
             _unitOfWork.UserRepository.Add(user);
             _unitOfWork.Save();
 
-            return user;
+            var account = new MetaObjectDto()
+            {
+                Name = user.Username,
+                Title = String.Format("{0} {1}", user.FirstName, user.LastName),
+                MetaTypeId = Types.Account.Id
+            };
+            var result = CreateMetaObject(account);
+            if (result != Guid.Empty)
+            {
+                return user;
+            }
+            throw new AppException("Account creating has been falied");
         }
 
         public void UpdateUser(Guid id, UserDto userDto, string password = null)
@@ -160,7 +172,7 @@ namespace Lancet.Service.Concrete
                     _unitOfWork.Save();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new AppException(ex.Message);
             }

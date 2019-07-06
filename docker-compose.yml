@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  lancet.api:
+    image: ${DOCKER_REGISTRY-}lancetapi
+    build:
+      context: .
+      dockerfile: Lancet.API\Dockerfile
+  

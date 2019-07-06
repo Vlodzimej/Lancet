@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Lancet.Models.Domain.Dtos
 {
-    class MetaTypeDto
+    public class MetaTypeDto
     {
         /// <summary>
         /// Идентификатор

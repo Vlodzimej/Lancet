@@ -19,30 +19,34 @@ namespace Lancet.API
             _lancetService = lancetService;
         }
         // GET: api/MetaObject
-        [HttpGet]
-        public string Get()
+        [HttpGet(Name = "Get")]
+        public IEnumerable<MetaObjectDto> Get([FromQuery]Guid id)
         {
-            return "value";
+            IEnumerable<MetaObjectDto> result = null;
+            if (id != Guid.Empty)
+            {
+                result = _lancetService.GetMetaObjectById(id);
+            }
+            else
+            {
+                result = _lancetService.GetAllMetaObjects();
+            }
+            return result;
         }
 
-        [HttpGet("{metaObjectId}", Name = "GetById")]
-        public MetaObjectDto GetById([FromQuery]Guid metaObjectId)
-        {
-            return _lancetService.GetMetaObjectById(metaObjectId);
-        }
-       
         // POST: api/MetaObject
-        [HttpPost]
-        public void Post([FromBody]string value)
+        [HttpPost(Name = "Create")]
+        public Guid Post([FromBody]MetaObjectDto metaObjectDto)
         {
+            return _lancetService.CreateMetaObject(metaObjectDto);
         }
-        
+
         // PUT: api/MetaObject/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]string value)
         {
         }
-        
+
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
         public void Delete(int id)
