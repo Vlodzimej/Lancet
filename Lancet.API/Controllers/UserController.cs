@@ -16,11 +16,11 @@ namespace Lancet.Controllers
     [Route("api/User")]
     public class UsersController : ControllerBase
     {
-        private ILancetService _coldWarService;
+        private ILancetService _lancetService;
 
-        public UsersController(ILancetService coldWarService)
+        public UsersController(ILancetService lancetService)
         {
-            _coldWarService = coldWarService;
+            _lancetService = lancetService;
         }
         [AllowAnonymous]
         [HttpPost("authenticate")]
@@ -28,7 +28,7 @@ namespace Lancet.Controllers
         {
             try
             {
-                var result = _coldWarService.AuthenticateUser(userDto);
+                var result = _lancetService.AuthenticateUser(userDto);
                 return new ObjectResult(result);
             }
             catch(AppException ex)
@@ -44,7 +44,7 @@ namespace Lancet.Controllers
             try
             {
                 // save 
-                _coldWarService.CreateUser(userDto);
+                _lancetService.CreateUser(userDto);
                 return new OkResult();
             }
             catch (AppException ex)
@@ -56,14 +56,14 @@ namespace Lancet.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var result = _coldWarService.GetAllUsers();
+            var result = _lancetService.GetAllUsers();
             return new ObjectResult(result);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetById(Guid id)
         {
-            var result = _coldWarService.GetUserById(id);
+            var result = _lancetService.GetUserById(id);
             return new ObjectResult(result);
         }
 
@@ -73,7 +73,7 @@ namespace Lancet.Controllers
             try
             {
                 // save 
-                _coldWarService.UpdateUser(id, userDto);
+                _lancetService.UpdateUser(id, userDto);
                 return new OkResult();
             }
             catch (AppException ex)
@@ -88,7 +88,7 @@ namespace Lancet.Controllers
         {
             try
             {
-                _coldWarService.DeleteUser(id);
+                _lancetService.DeleteUser(id);
                 return new OkResult();
             }
             catch(AppException ex)
