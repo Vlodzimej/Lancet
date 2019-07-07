@@ -18,6 +18,7 @@ namespace Lancet.Service.Concrete
             var objects = _unitOfWork.ObjectRelationRepository.Get(r => (metaTypeId != null ? r.MetaTypeId == metaTypeId : true)).Select(or => relations.Contains(or.Id) && or.MetaObjectId != metaObjectId);
             return new List<RelationDto>()
             {
+                new RelationDto(),
                 new RelationDto()
             };
         }
