@@ -16,7 +16,10 @@ namespace Lancet.Service.Concrete
             var relations = _unitOfWork.RelationRepository.Get().Where(x => objectRelations.Select(or => or.RelationId == x.Id).Any()).Select(x => x.Id);
             // Находим связанные объекты
             var objects = _unitOfWork.ObjectRelationRepository.Get(r => (metaTypeId != null ? r.MetaTypeId == metaTypeId : true)).Select(or => relations.Contains(or.Id) && or.MetaObjectId != metaObjectId);
-            return null;
+            return new List<RelationDto>()
+            {
+                new RelationDto()
+            };
         }
     }
 }
